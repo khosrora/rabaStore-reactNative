@@ -4,14 +4,15 @@ import { StyleSheet, Text, TouchableHighlight, View, Image } from "react-native"
 import Icon from "react-native-vector-icons/AntDesign"
 
 
-const HomeLayout: React.FC<any> = ({ children }) => {
+const HomeLayout: React.FC<any> = ({ children, navigation }) => {
     return (
         <>
             <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: 10, backgroundColor: "#FFFFFF" }}>
                 <Icon
-                    name="gift"
+                    name="bars"
                     size={30}
                     color="#000"
+                    onPress={() => navigation.navigate('Categories')}
                 />
                 <Image
                     source={{ uri: 'https://img.freepik.com/free-icon/man_318-860789.jpg' }}
@@ -21,7 +22,7 @@ const HomeLayout: React.FC<any> = ({ children }) => {
             {children}
             <View style={styles.navigationBottom}>
                 <View style={styles.child}>
-                    <TouchableHighlight>
+                    <TouchableHighlight onPress={() => navigation.navigate('Home')}>
                         <View style={styles.home}>
                             <Icon
                                 name="home"

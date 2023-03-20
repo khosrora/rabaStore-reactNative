@@ -12,6 +12,7 @@ import Welcome from './components/Welcome';
 import Home from './screens/Home';
 // ! Redux
 import { useSelector } from "react-redux";
+import Categories from './screens/Categories';
 
 const Index = () => {
 
@@ -25,7 +26,10 @@ const Index = () => {
                     welcomePage ?
                         <Stack.Screen name="Welcome" component={Welcome} />
                         :
-                        <Stack.Screen name="Home" component={Home} />
+                        <>
+                            <Stack.Screen name="Home" component={Home} />
+                            <Stack.Screen name="Categories" component={Categories} />
+                        </>
                 }
             </Stack.Navigator>
         </NavigationContainer >
