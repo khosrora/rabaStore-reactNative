@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Text, View, StyleSheet, Image, TouchableHighlight, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign';
 
+import { useDispatch } from "react-redux";
+import { welcomePageAction } from "../redux/global/action";
 
 type PagesType = {
     id: number,
@@ -38,10 +40,12 @@ const pages: PagesType[] = [
 
 const Welcome = () => {
 
+    const dispatch: any = useDispatch();
+
     const [page, setPage] = useState<number>(1);
 
     const handleNextPage = () => {
-        if (page === 3) setPage(page - 1)
+        if (page === 3) dispatch(welcomePageAction(false))
         else setPage(page + 1)
 
     }
@@ -71,7 +75,7 @@ const Welcome = () => {
                                 {
                                     page === 3 ?
                                         <TouchableHighlight
-                                            onPress={() => console.log("object")}
+                                            onPress={() => handleNextPage()}
                                             style={{ backgroundColor: "#000", padding: 10, borderRadius: 100 / 2, display: "flex", justifyContent: "center", alignContent: "center" }}
                                         >
                                             <Icon

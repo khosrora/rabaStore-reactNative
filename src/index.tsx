@@ -10,21 +10,25 @@ const Stack = createNativeStackNavigator();
 import Welcome from './components/Welcome';
 // ! Screens
 import Home from './screens/Home';
-
+// ! Redux
+import { useSelector } from "react-redux";
 
 const Index = () => {
 
-    
-        
+    const { global }: any = useSelector(state => state);
+    const welcomePage: boolean = global.welcomePage;
+    console.log(welcomePage);
+
+
     return (
         <NavigationContainer onReady={() => RNBootSplash.hide()}>
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
-            {
-                true ? 
-                <Stack.Screen name="Welcome" component={Welcome} />
-                :
-                <Stack.Screen name="Home" component={Home} />
-            }
+                {
+                    welcomePage ?
+                        <Stack.Screen name="Welcome" component={Welcome} />
+                        :
+                        <Stack.Screen name="Home" component={Home} />
+                }
             </Stack.Navigator>
         </NavigationContainer >
     );
