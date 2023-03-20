@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     },
     child: {
         backgroundColor: "#FFFFFF",
-        padding: 5,
         width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
