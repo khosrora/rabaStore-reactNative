@@ -17,8 +17,6 @@ const Index = () => {
 
     const { global }: any = useSelector(state => state);
     const welcomePage: boolean = global.welcomePage;
-    console.log(welcomePage);
-
 
     return (
         <NavigationContainer onReady={() => RNBootSplash.hide()}>
