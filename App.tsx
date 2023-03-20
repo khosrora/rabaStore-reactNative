@@ -5,30 +5,28 @@
  * @format
  */
 
-import React, { useEffect } from "react";
-import { SafeAreaView, Text } from "react-native"
-
-
-import RNBootSplash from "react-native-bootsplash";
+import React from "react";
 import Index from "./src";
+
+import { StatusBar } from 'react-native';
+import { enableScreens } from 'react-native-screens';
+
+enableScreens();
+
 
 function App(): JSX.Element {
 
-  useEffect(() => {
-    const init = async () => {
-      // …do multiple sync or async tasks
-    };
-
-    init().finally(async () => {
-      await RNBootSplash.hide({ fade: true, duration: 500 });
-      console.log("Bootsplash has been hidden successfully");
-    });
-  }, []);
 
   return (
-    <SafeAreaView >
+    <>
+      <StatusBar
+        animated={true}
+        backgroundColor="#FFFFFF"
+        barStyle='dark-content'
+        showHideTransition='slide'
+      />
       <Index />
-    </SafeAreaView>
+    </>
   );
 }
 

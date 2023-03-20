@@ -1,13 +1,32 @@
-import { Text, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import RNBootSplash from "react-native-bootsplash";
 
 
+// ! stack navigate
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
+
+// !components
+import Welcome from './components/Welcome';
+// ! Screens
+import Home from './screens/Home';
 
 
 const Index = () => {
+
+    
+        
     return (
-        <View>
-            <Text> Hello world </Text>
-        </View>
+        <NavigationContainer onReady={() => RNBootSplash.hide()}>
+            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Home'>
+            {
+                true ? 
+                <Stack.Screen name="Welcome" component={Welcome} />
+                :
+                <Stack.Screen name="Home" component={Home} />
+            }
+            </Stack.Navigator>
+        </NavigationContainer >
     );
 }
 
