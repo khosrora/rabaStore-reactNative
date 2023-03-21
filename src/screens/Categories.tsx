@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import HomeLayout from "../layout/HomeLayout";
 import Icon from "react-native-vector-icons/AntDesign"
 
@@ -21,21 +21,23 @@ const Categories: React.FC<any> = ({ navigation }) => {
             <ScrollView style={styles.parent}>
                 {
                     data.map((i: DataType) =>
-                        <View key={i.id} style={{ backgroundColor: "#000", padding: 15, borderRadius: 30, marginTop: 10 }}>
-                            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                                <View>
-                                    <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}>{i.title}</Text>
-                                </View>
-                                <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
-                                    <Text style={{ color: "#FFFFFF", fontSize: 10, fontWeight: "bold", marginRight: 10 }}>{i.count} Products</Text>
-                                    <Icon
-                                        name="caretright"
-                                        size={20}
-                                        color="#FFFFFF"
-                                    />
+                        <TouchableOpacity key={i.id}>
+                            <View style={{ backgroundColor: "#000", padding: 15, borderRadius: 30, marginTop: 10 }}>
+                                <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                                    <View>
+                                        <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}>{i.title}</Text>
+                                    </View>
+                                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
+                                        <Text style={{ color: "#FFFFFF", fontSize: 10, fontWeight: "bold", marginRight: 10 }}>{i.count} Products</Text>
+                                        <Icon
+                                            name="caretright"
+                                            size={20}
+                                            color="#FFFFFF"
+                                        />
+                                    </View>
                                 </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     )
                 }
             </ScrollView>
