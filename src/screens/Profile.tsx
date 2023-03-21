@@ -41,7 +41,7 @@ const Profile: React.FC<any> = ({ navigation }) => {
                 <View style={styles.parentBox}>
                     {
                         List.map((i: ulListType) =>
-                            <TouchableOpacity>
+                            <TouchableOpacity key={i.id}>
                                 <View style={styles.box}>
                                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
                                         <IconFontAwesome

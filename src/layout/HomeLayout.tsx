@@ -40,7 +40,7 @@ const HomeLayout: React.FC<any> = ({ children, navigation }) => {
                             color="#000"
                         />
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={() => console.log("object")}>
+                    <TouchableHighlight onPress={() => navigation.navigate("Login")}>
                         <Icon
                             name="bells"
                             size={20}
