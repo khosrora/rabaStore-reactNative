@@ -21,7 +21,7 @@ const Categories: React.FC<any> = ({ navigation }) => {
             <ScrollView style={styles.parent}>
                 {
                     data.map((i: DataType) =>
-                        <TouchableOpacity key={i.id}>
+                        <TouchableOpacity onPress={() => navigation.navigate("ProductsCategories")} key={i.id}>
                             <View style={{ backgroundColor: "#000", padding: 15, borderRadius: 30, marginTop: 10 }}>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                                     <View>

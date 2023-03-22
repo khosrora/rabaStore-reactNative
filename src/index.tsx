@@ -13,8 +13,10 @@ import Home from './screens/Home';
 import Categories from './screens/Categories';
 import Profile from './screens/Profile';
 import Login from './screens/Login';
+import SingleProduct from './screens/SingleProduct';
 // ! Redux
 import { useSelector } from "react-redux";
+import ProductsCategories from './screens/ProductsCategories';
 
 const Index = () => {
 
@@ -33,6 +35,8 @@ const Index = () => {
                             <Stack.Screen name="Login" component={Login} />
                             <Stack.Screen name="Categories" component={Categories} />
                             <Stack.Screen name="Profile" component={Profile} />
+                            <Stack.Screen name="ProductsCategories" component={ProductsCategories} />
+                            <Stack.Screen name="SingleProduct" component={SingleProduct} />
                         </>
                 }
             </Stack.Navigator>
