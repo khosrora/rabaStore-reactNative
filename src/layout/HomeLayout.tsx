@@ -33,7 +33,7 @@ const HomeLayout: React.FC<any> = ({ children, navigation }) => {
                             <Text style={{ backgroundColor: "#EDEDED", paddingBottom: 3, paddingTop: 3, paddingRight: 10, paddingLeft: 10, borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -10 }}> Home </Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={() => console.log("object")}>
+                    <TouchableHighlight onPress={() => navigation.navigate("Basket")}>
                         <Icon
                             name="shoppingcart"
                             size={20}

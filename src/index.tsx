@@ -14,6 +14,8 @@ import Categories from './screens/Categories';
 import Profile from './screens/Profile';
 import Login from './screens/Login';
 import SingleProduct from './screens/SingleProduct';
+import Basket from './screens/Basket';
+
 // ! Redux
 import { useSelector } from "react-redux";
 import ProductsCategories from './screens/ProductsCategories';
@@ -37,6 +39,7 @@ const Index = () => {
                             <Stack.Screen name="Profile" component={Profile} />
                             <Stack.Screen name="ProductsCategories" component={ProductsCategories} />
                             <Stack.Screen name="SingleProduct" component={SingleProduct} />
+                            <Stack.Screen name="Basket" component={Basket} />
                         </>
                 }
             </Stack.Navigator>

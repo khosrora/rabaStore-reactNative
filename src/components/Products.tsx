@@ -1,4 +1,3 @@
-import { FlatGrid } from 'react-native-super-grid';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from 'react';
 
