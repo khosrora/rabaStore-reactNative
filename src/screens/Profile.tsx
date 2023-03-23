@@ -1,10 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import HomeLayout from "../layout/HomeLayout";
 
 import Icon from "react-native-vector-icons/AntDesign"
 import IconFontAwesome from "react-native-vector-icons/FontAwesome"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { darkMode } from "./../redux/global/action"
 
 type ulListType = {
     id: number,
@@ -21,7 +23,9 @@ const List: ulListType[] = [
 
 const Profile: React.FC<any> = ({ navigation }) => {
 
+
     const { global }: any = useSelector(state => state);
+    const dispatch = useDispatch()
     const dark = global.dark;
 
     return (
@@ -68,7 +72,7 @@ const Profile: React.FC<any> = ({ navigation }) => {
                     }
                 </View>
                 <View style={[styles.parentBox, dark ? styles.parentBoxColor : null]}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => dispatch(darkMode(!dark))}>
                         <View style={styles.box}>
                             <View style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
                                 <IconFontAwesome
@@ -77,7 +81,11 @@ const Profile: React.FC<any> = ({ navigation }) => {
                                     size={20}
                                     color={dark ? "#EDEDED" : "#EDEDED"}
                                 />
-                                <Text style={{ fontSize: 15, fontWeight: "bold", color: dark ? "#EDEDED" : "#000", marginLeft: 5 }}>Set Dark</Text>
+                                <Text style={{ fontSize: 15, fontWeight: "bold", color: dark ? "#EDEDED" : "#000", marginLeft: 5 }}>
+                                    {
+                                        dark ? 'Set Light Mode' : "Set Dark Mode"
+                                    }
+                                </Text>
                             </View>
                             <IconFontAwesome
                                 name="chevron-right"
@@ -104,8 +112,8 @@ const styles = StyleSheet.create({
         marginLeft: "auto",
         marginRight: 'auto',
         display: "flex",
-        rowGap: 10 ,
-        marginTop : 5
+        rowGap: 10,
+        marginTop: 5
     },
     parentBoxColor: {
         borderColor: "#323232"

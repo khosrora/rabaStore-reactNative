@@ -72,15 +72,15 @@ const Basket: React.FC<any> = ({ navigation }) => {
                                                         <Icon
                                                             name="minus"
                                                             size={15}
-                                                            color={dark ? "#FFFFFF" : "000"}
+                                                            color={dark ? "#FFFFFF" : "#000"}
                                                         />
                                                     </TouchableOpacity>
-                                                    <Text style={{ color: dark ? "#FFFFFF" : "000" }}> 1 </Text>
+                                                    <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> 1 </Text>
                                                     <TouchableOpacity>
                                                         <Icon
                                                             name="plus"
                                                             size={15}
-                                                            color={dark ? "#FFFFFF" : "000"}
+                                                            color={dark ? "#FFFFFF" : "#000"}
                                                         />
                                                     </TouchableOpacity>
                                                 </View>
@@ -94,20 +94,20 @@ const Basket: React.FC<any> = ({ navigation }) => {
 
                     <View style={{ marginTop: 20, rowGap: 10, borderWidth: 1, borderRadius: 5, padding: 10, borderColor: dark ? "#323232" : "#EDEDED" }}>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Subtotal: </Text>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 483 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> Subtotal: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> $ 483 </Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Shipping: </Text>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 17 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> Shipping: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> $ 17 </Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Subtotal: </Text>
-                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 500 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> Subtotal: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "#000" }}> $ 500 </Text>
                         </View>
                     </View>
                     <TouchableOpacity>
-                        <View style={{ padding: 10, backgroundColor: dark ? "#323232" : "000" , borderRadius: 5, marginTop: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ padding: 10, backgroundColor: dark ? "#323232" : "#000" , borderRadius: 5, marginTop: 5, justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ color: "#FFFFFF" }}> Proceed to Checkout </Text>
                         </View>
                     </TouchableOpacity>

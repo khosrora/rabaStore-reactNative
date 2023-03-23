@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableHighlight, View, Image } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View , Image } from "react-native";
 
 import Icon from "react-native-vector-icons/AntDesign"
 
@@ -22,7 +22,7 @@ const HomeLayout: React.FC<any> = ({ dark, children, navigation }) => {
             {children}
             <View style={[styles.navigationBottom, dark ? styles.navigationBottomBackground : null]}>
                 <View style={styles.child}>
-                    <TouchableHighlight onPress={() => navigation.navigate('Home')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                         <View style={styles.home}>
                             <Icon
                                 name="home"
@@ -32,28 +32,28 @@ const HomeLayout: React.FC<any> = ({ dark, children, navigation }) => {
                             />
                             <Text style={{ backgroundColor: dark ? "#323232" : "#EDEDED", paddingBottom: 3, paddingTop: 3, paddingRight: 10, paddingLeft: 10, borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -10 }}> Home </Text>
                         </View>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => navigation.navigate("Basket")}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Basket")}>
                         <Icon
                             name="shoppingcart"
                             size={20}
                             color={`${dark ? "#EDEDED" : "#323232"}`}
                         />
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => navigation.navigate("Login")}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                         <Icon
                             name="bells"
                             size={20}
                             color={`${dark ? "#EDEDED" : "#323232"}`}
                         />
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => navigation.navigate('Profile')}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                         <Icon
                             name="user"
                             size={20}
                             color={`${dark ? "#EDEDED" : "#323232"}`}
                         />
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
         </>
