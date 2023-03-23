@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Text, View, StyleSheet, Image, TouchableHighlight, TouchableOpacity } from "react-native";
+
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { welcomePageAction } from "../redux/global/action";
+
 
 type PagesType = {
     id: number,
@@ -40,6 +42,9 @@ const pages: PagesType[] = [
 
 const Welcome = () => {
 
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
+
     const dispatch: any = useDispatch();
 
     const [page, setPage] = useState<number>(1);
@@ -55,14 +60,14 @@ const Welcome = () => {
             {
                 pages.map((i: PagesType) => {
                     if (i.id === page) {
-                        return <View key={i.id} style={styles.parent}>
+                        return <View key={i.id} style={[styles.parent, dark ? styles.parentBackground : null]}>
                             <View style={styles.Image}>
                                 <Image style={{ height: "100%", width: "100%" }} source={i.image} />
                             </View>
                             <View style={styles.descs}>
-                                <Text style={{ fontSize: 25, fontWeight: "bold", color: "#2D2727" }}> {i.title} </Text>
-                                <Text style={{ fontSize: 35, fontWeight: "bold", color: "#2D2727", marginTop: 5 }}> {i.short_desc} </Text>
-                                <Text style={{ marginTop: 5, lineHeight: 30 }}>
+                                <Text style={{ fontSize: 25, fontWeight: "bold", color: dark ? "#FFFFFF" : "#2D2727" }}> {i.title} </Text>
+                                <Text style={{ fontSize: 35, fontWeight: "bold", color: dark ? "#FFFFFF" : "#2D2727", marginTop: 5 }}> {i.short_desc} </Text>
+                                <Text style={{ marginTop: 5, lineHeight: 30, color: dark ? "#FFFFFF" : "#2D2727" }}>
                                     {i.desc}
                                 </Text>
                             </View>
@@ -109,17 +114,17 @@ const styles = StyleSheet.create({
     parent: {
         height: "100%",
         padding: 20,
-        backgroundColor: "#FFFFFF",
+    },
+    parentBackground: {
+        backgroundColor: "#000",
     },
     Image: {
         flex: 4,
-        backgroundColor: "#FFFFFF",
         borderRadius: 20,
         overflow: "hidden"
     },
     descs: {
         flex: 1,
-        backgroundColor: "#FFFFFF",
         marginTop: 30
     },
     next: {

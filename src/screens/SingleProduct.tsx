@@ -3,13 +3,16 @@ import { FlatList, Image, View, Dimensions, TouchableOpacity, ScrollView, StyleS
 import ProductLayout from "../layout/ProductLayout";
 
 import Icon from 'react-native-vector-icons/AntDesign';
-import IconFontAwesome from "react-native-vector-icons/FontAwesome"
+import { useSelector } from "react-redux";
 
 const { width, height } = Dimensions.get('screen')
 
 
 
 const SingleProduct: React.FC<any> = ({ navigation }) => {
+
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
 
     const [images, setImages] = React.useState<string[]>(
         [
@@ -65,8 +68,8 @@ const SingleProduct: React.FC<any> = ({ navigation }) => {
     )
 
     return (
-        <ProductLayout>
-            <View style={{ backgroundColor: "#FFFFFF", width: "100%", position: "relative", flex: 1 }}>
+        <ProductLayout dark={dark}>
+            <View style={{ backgroundColor: dark ? "#000" : "#FFFFFF", width: "100%", position: "relative", flex: 1 }}>
                 <FlatList
                     style={{ width: "100%" }}
                     horizontal={true}
@@ -99,28 +102,28 @@ const SingleProduct: React.FC<any> = ({ navigation }) => {
                     />
                 </TouchableOpacity>
             </View>
-            <View style={{ flex: 1, backgroundColor: "#FFFFFF", marginTop: -100, borderTopEndRadius: 40, borderTopStartRadius: 40, overflow: 'hidden', padding: 10 }}>
+            <View style={{ flex: 1, backgroundColor: dark ? "#000" : "#FFFFFF", marginTop: -100, borderTopEndRadius: 40, borderTopStartRadius: 40, overflow: 'hidden', padding: 10 }}>
                 <ScrollView>
                     <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 25, padding: 10 }}>
                         <View style={{ width: "60%" }}>
-                            <Text style={{ fontSize: 20, color: "#000", fontWeight: "bold" }}> Roller Rabbit </Text>
+                            <Text style={{ fontSize: 20, color: dark ? "#EDEDED" : "#000", fontWeight: "bold" }}> Roller Rabbit </Text>
                             <Text style={{ fontSize: 12, fontWeight: "normal", marginTop: 5 }}> Lorem ipsum dolor sit amet. </Text>
                             <Text style={{ fontSize: 12, fontWeight: "normal", marginTop: 5 }}> ( 325 Review ) </Text>
                         </View>
-                        <View style={styles.counter}>
+                        <View style={[styles.counter, dark ? styles.counterColor : null]}>
                             <TouchableOpacity>
                                 <Icon
                                     name="minus"
                                     size={15}
-                                    color="#000"
+                                    color={dark ? "#EDEDED" : "#000"}
                                 />
                             </TouchableOpacity>
-                            <Text style={{ color: "#000" }}> 1 </Text>
+                            <Text style={{ color: dark ? "#EDEDED" : "#000" }}> 1 </Text>
                             <TouchableOpacity>
                                 <Icon
                                     name="plus"
                                     size={15}
-                                    color="#000"
+                                    color={dark ? "#EDEDED" : "#000"}
                                 />
                             </TouchableOpacity>
                         </View>
@@ -128,7 +131,7 @@ const SingleProduct: React.FC<any> = ({ navigation }) => {
                     <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', padding: 10 }}>
                         <View style={{ width: "80%" }}>
                             <View>
-                                <Text style={{ fontSize: 20, color: "#000", fontWeight: "bold" }}> Size </Text>
+                                <Text style={{ fontSize: 20, color: dark ? "#EDEDED" : "#000", fontWeight: "bold" }}> Size </Text>
                                 <FlatList
                                     style={{ width: "100%" }}
                                     horizontal={true}
@@ -147,7 +150,7 @@ const SingleProduct: React.FC<any> = ({ navigation }) => {
                             </View>
                         </View>
                         <View style={{ width: "20%" }}>
-                            <View style={styles.colorsParent}>
+                            <View style={[styles.colorsParent, dark ? styles.counterColor : null]}>
                                 <FlatList
                                     style={{ marginLeft: "auto", marginRight: "auto" }}
                                     showsHorizontalScrollIndicator={false}
@@ -179,6 +182,7 @@ const SingleProduct: React.FC<any> = ({ navigation }) => {
 const styles = StyleSheet.create({
     backIcon: { backgroundColor: "#000", padding: 5, borderRadius: 100 / 2, display: "flex", justifyContent: "center", alignContent: "center", position: 'absolute', left: 5, top: 10 },
     counter: { flexDirection: "row", justifyContent: 'space-between', alignItems: "center", backgroundColor: "#EDEDED", padding: 10, width: "40%", borderRadius: 20, paddingLeft: 10, paddingRight: 10 },
+    counterColor: { backgroundColor: "#323232" },
     sizeParent: { borderWidth: 1, marginTop: 5, borderColor: "#B2B2B2", width: 38, height: 38, borderRadius: 100 / 2, marginLeft: 10, display: "flex", justifyContent: "center", alignItems: "center" },
     colorsParent: { backgroundColor: "#FFFFFF", elevation: 5, borderRadius: 20, width: "70%", marginLeft: 'auto', marginRight: "auto", padding: 15, height: 150 },
 })

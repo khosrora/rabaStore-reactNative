@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import HomeLayout from "../layout/HomeLayout";
 import Icon from "react-native-vector-icons/AntDesign"
+import { useSelector } from "react-redux";
 
 type DataType = {
     id: number,
@@ -16,13 +17,17 @@ const data: DataType[] = [
 ]
 
 const Categories: React.FC<any> = ({ navigation }) => {
+
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
+
     return (
-        <HomeLayout navigation={navigation}>
-            <ScrollView style={styles.parent}>
+        <HomeLayout dark={dark} navigation={navigation}>
+            <ScrollView style={[styles.parent, dark ? styles.parentColor : null]}>
                 {
                     data.map((i: DataType) =>
                         <TouchableOpacity onPress={() => navigation.navigate("ProductsCategories")} key={i.id}>
-                            <View style={{ backgroundColor: "#000", padding: 15, borderRadius: 30, marginTop: 10 }}>
+                            <View style={{ backgroundColor: dark ? "#323232" : "#000", padding: 15, borderRadius: 30, marginTop: 10 }}>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                                     <View>
                                         <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}>{i.title}</Text>
@@ -51,6 +56,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFFFFF',
         padding: 10,
+    },
+    parentColor: {
+        backgroundColor: '#000',
     }
 })
 

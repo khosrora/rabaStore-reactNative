@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { Image, Text, View, ScrollView, FlatList, TouchableOpacity, TextInput } from "react-native";
+import { Image, Text, View, ScrollView, FlatList, TouchableOpacity } from "react-native";
 import Products, { dataType } from "../components/Products";
 import HomeLayout from "../layout/HomeLayout";
+
+import { useSelector } from "react-redux";
 
 import Icon from "react-native-vector-icons/FontAwesome"
 
@@ -44,19 +46,22 @@ const Home: React.FC<any> = ({ navigation }) => {
         { id: 6, name: "Dresses" },
     ])
 
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
+
     return (
-        <HomeLayout navigation={navigation}>
+        <HomeLayout dark={dark} navigation={navigation}>
             <ScrollView nestedScrollEnabled={true}>
-                <View style={{ backgroundColor: "#FFFFFF", flex: 1, padding: 10 }}>
-                    <Text style={{ fontSize: 30, fontWeight: "bold", color: "#000" }}> Welcome </Text>
-                    <Text style={{ fontSize: 13, fontWeight: "500", marginLeft: 20 }}> Our Fashion APP </Text>
+                <View style={{ backgroundColor: dark ? "#000" : "#FFFFFF", flex: 1, padding: 10 }}>
+                    <Text style={{ fontSize: 30, fontWeight: "bold", color: dark ? "#EDEDED" : "#323232" }}> Welcome </Text>
+                    <Text style={{ fontSize: 13, fontWeight: "500", marginLeft: 20, color: dark ? "#EDEDED" : "#323232" }}> Our Fashion APP </Text>
                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 20 }}>
                         <TouchableOpacity style={{ width: "100%" }}>
-                            <View style={{ backgroundColor: "#EDEDED", padding: 20, width: "100%", borderRadius: 30, display: "flex", flexDirection: 'row', justifyContent: "flex-start", alignItems: "center" }}>
+                            <View style={{ backgroundColor: dark ? "#323232" : "#EDEDED", padding: 20, width: "100%", borderRadius: 30, display: "flex", flexDirection: 'row', justifyContent: "flex-start", alignItems: "center" }}>
                                 <Icon
                                     name="search"
                                     size={15}
-                                    color="#000"
+                                    color={`${dark ? "#EDEDED" : "#323232"}`}
                                 />
                                 <Text> Search </Text>
                             </View>
@@ -89,8 +94,8 @@ const Home: React.FC<any> = ({ navigation }) => {
                         data={categories}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity key={index}>
-                                <View style={{ borderWidth: 1, borderColor: "#EDEDED", borderRadius: 20, padding: 5, marginLeft: 10 }}>
-                                    <Text style={{ color: "#000", fontWeight: "bold" }}> {item.name} </Text>
+                                <View style={{ borderWidth: 1, borderColor: dark ? "#323232" : "#EDEDED", borderRadius: 20, padding: 5, marginLeft: 10 }}>
+                                    <Text style={{ color: dark ? "#EDEDED" : "#323232", fontWeight: "bold" }}> {item.name} </Text>
                                 </View>
                             </TouchableOpacity>
                         )}
@@ -99,7 +104,7 @@ const Home: React.FC<any> = ({ navigation }) => {
                         <Text style={{ marginTop: 5, fontSize: 20, fontWeight: "bold", color: "#000" }}> Latest products </Text>
                         <Text> Veiew All </Text>
                     </View>
-                    <Products data={productsData} navigation={navigation} />
+                    <Products dark={dark} data={productsData} navigation={navigation} />
                 </View>
             </ScrollView>
         </HomeLayout>

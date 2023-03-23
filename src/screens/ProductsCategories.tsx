@@ -3,6 +3,7 @@ import React from "react";
 import HomeLayout from "../layout/HomeLayout";
 import Products, { dataType } from "../components/Products";
 import { ScrollView, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 
 let productsData: dataType[] = [
@@ -46,17 +47,22 @@ let productsData: dataType[] = [
 
 
 const ProductsCategories: React.FC<any> = ({ navigation }) => {
+
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
+
+
     return (
-        <HomeLayout navigation={navigation}>
+        <HomeLayout dark={dark} navigation={navigation}>
             <ScrollView>
-                <View style={{ flex: 1, backgroundColor: "#FFFFFF", padding: 10 }}>
+                <View style={{ flex: 1, backgroundColor: dark ? "#000" : "#FFFFFF", padding: 10 }}>
                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 5 }}>
-                        <Text style={{ marginTop: 5, fontSize: 20, fontWeight: "bold", color: "#000" }}> Bags </Text>
+                        <Text style={{ marginTop: 5, fontSize: 20, fontWeight: "bold", color: dark ? "#FFFFFF" : "#000" }}> Bags </Text>
                     </View>
-                    <Products data={productsData} navigation={navigation} />
+                    <Products dark={dark} data={productsData} navigation={navigation} />
                 </View>
             </ScrollView>
-        </HomeLayout>
+        </HomeLayout >
     );
 }
 

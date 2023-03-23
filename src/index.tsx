@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from "react-native-bootsplash";
 
@@ -17,13 +18,24 @@ import SingleProduct from './screens/SingleProduct';
 import Basket from './screens/Basket';
 
 // ! Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductsCategories from './screens/ProductsCategories';
+import { darkMode } from './redux/global/action';
 
-const Index = () => {
 
+type Props = {
+    isDarkTheme: boolean
+}
+
+const Index: React.FC<Props> = ({ isDarkTheme }) => {
+
+    const dispatch: any = useDispatch();
     const { global }: any = useSelector(state => state);
     const welcomePage: boolean = global.welcomePage;
+
+    React.useEffect(() => {
+        dispatch(darkMode(isDarkTheme))
+    }, [])
 
     return (
         <NavigationContainer onReady={() => RNBootSplash.hide()}>

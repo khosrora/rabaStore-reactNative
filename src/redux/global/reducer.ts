@@ -1,11 +1,12 @@
-import { WELCOM_SCREEN } from "./action";
+import { WELCOM_SCREEN , SET_DARKMODE } from "./action";
 import { GlobalReducer } from "./types";
 
 
 
 
 const initialState: GlobalReducer = {
-    welcomePage: true
+    welcomePage: true , 
+    dark : false
 }
 
 const globalReducer =  (state = initialState, action: any) => {
@@ -15,6 +16,11 @@ const globalReducer =  (state = initialState, action: any) => {
             return {
                 ...state,
                 welcomePage: action.payload.data
+            }
+        case SET_DARKMODE : 
+            return {
+                ...state , 
+                dark : action.payload.data
             }
         default:
             return state;

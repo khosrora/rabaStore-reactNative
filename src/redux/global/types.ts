@@ -3,5 +3,6 @@
 
 
 export type GlobalReducer = {
-    welcomePage : boolean 
+    welcomePage: boolean,
+    dark: boolean
 }

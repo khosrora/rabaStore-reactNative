@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
+import { useSelector } from "react-redux";
 import HomeLayout from "../layout/HomeLayout";
 
 type ProductType = {
@@ -26,9 +27,13 @@ const Basket: React.FC<any> = ({ navigation }) => {
         },
     ])
 
+
+    const { global }: any = useSelector(state => state);
+    const dark = global.dark;
+
     return (
-        <HomeLayout navigation={navigation}>
-            <View style={{ flex: 1, backgroundColor: "#FFFFFF", padding: 10 }} >
+        <HomeLayout dark={dark} navigation={navigation}>
+            <View style={{ flex: 1, backgroundColor: dark ? "#000" : "#FFFFFF", padding: 10 }} >
                 <ScrollView>
                     <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                         <TouchableOpacity
@@ -57,25 +62,25 @@ const Basket: React.FC<any> = ({ navigation }) => {
                                     <View style={{ width: "70%", height: "100%", marginLeft: 5 }}>
                                         <View style={{ width: "100%", height: "100%", display: "flex", justifyContent: "space-around" }}>
                                             <View >
-                                                <Text style={{ fontSize: 15, fontWeight: "bold", color: "#000" }}> {i.title} </Text>
+                                                <Text style={{ fontSize: 15, fontWeight: "bold", color: dark ? "#FFFFFF" : "#000" }}> {i.title} </Text>
                                                 <Text style={{ fontSize: 10, fontWeight: "normal", marginLeft: 3 }}> {i.desc}  </Text>
                                             </View>
                                             <View style={{ flexDirection: "row", justifyContent: 'space-between', alignItems: 'center' }}>
-                                                <Text style={{ fontSize: 15, fontWeight: "900", color: "#000" }}> $ {i.price} </Text>
-                                                <View style={styles.counter}>
+                                                <Text style={{ fontSize: 15, fontWeight: "900", color: dark ? "#FFFFFF" : "#000" }}> $ {i.price} </Text>
+                                                <View style={[styles.counter, dark ? styles.counterParent : null]}>
                                                     <TouchableOpacity>
                                                         <Icon
                                                             name="minus"
                                                             size={15}
-                                                            color="#000"
+                                                            color={dark ? "#FFFFFF" : "000"}
                                                         />
                                                     </TouchableOpacity>
-                                                    <Text style={{ color: "#000" }}> 1 </Text>
+                                                    <Text style={{ color: dark ? "#FFFFFF" : "000" }}> 1 </Text>
                                                     <TouchableOpacity>
                                                         <Icon
                                                             name="plus"
                                                             size={15}
-                                                            color="#000"
+                                                            color={dark ? "#FFFFFF" : "000"}
                                                         />
                                                     </TouchableOpacity>
                                                 </View>
@@ -87,22 +92,22 @@ const Basket: React.FC<any> = ({ navigation }) => {
                         }
                     </View>
 
-                    <View style={{ marginTop: 20, rowGap: 10, borderWidth: 1, borderRadius: 5, padding: 10, borderColor: "#EDEDED" }}>
+                    <View style={{ marginTop: 20, rowGap: 10, borderWidth: 1, borderRadius: 5, padding: 10, borderColor: dark ? "#323232" : "#EDEDED" }}>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: "#000" }}> Subtotal: </Text>
-                            <Text style={{ color: "#000" }}> $ 483 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Subtotal: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 483 </Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: "#000" }}> Shipping: </Text>
-                            <Text style={{ color: "#000" }}> $ 17 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Shipping: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 17 </Text>
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', width: "100%" }}>
-                            <Text style={{ color: "#000" }}> Subtotal: </Text>
-                            <Text style={{ color: "#000" }}> $ 500 </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> Subtotal: </Text>
+                            <Text style={{ color: dark ? "#FFFFFF" : "000" }}> $ 500 </Text>
                         </View>
                     </View>
                     <TouchableOpacity>
-                        <View style={{ padding: 10, backgroundColor: "#000", borderRadius: 5, marginTop: 5, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ padding: 10, backgroundColor: dark ? "#323232" : "000" , borderRadius: 5, marginTop: 5, justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ color: "#FFFFFF" }}> Proceed to Checkout </Text>
                         </View>
                     </TouchableOpacity>
@@ -122,6 +127,9 @@ const styles = StyleSheet.create({
         padding: 10
     },
     counter: { flexDirection: "row", justifyContent: 'space-between', alignItems: "center", backgroundColor: "#EDEDED", padding: 10, width: "40%", borderRadius: 20, paddingLeft: 10, paddingRight: 10 },
+    counterParent: {
+        backgroundColor: "#323232"
+    }
 })
 
 export default Basket;
