@@ -61,3 +61,40 @@ yarn-error.log
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+
+/web/backend-raba-store/node_modules
+# compiled output
+/web/backend-raba-store/dist
+/web/backend-raba-store/node_modules
+
+# Logs
+/web/backend-raba-store/logs
+/web/backend-raba-store/*.log
+/web/backend-raba-store/npm-debug.log*
+/web/backend-raba-store/pnpm-debug.log*
+/web/backend-raba-store/yarn-debug.log*
+/web/backend-raba-store/yarn-error.log*
+/web/backend-raba-store/lerna-debug.log*
+
+# OS
+/web/backend-raba-store/.DS_Store
+
+# Tests
+/web/backend-raba-store/coverage
+/web/backend-raba-store/.nyc_output
+
+# IDEs and editors
+/web/backend-raba-store/.idea
+/web/backend-raba-store/.project
+/web/backend-raba-store/.classpath
+/web/backend-raba-store/.c9/
+/web/backend-raba-store/*.launch
+/web/backend-raba-store/.settings/
+/web/backend-raba-store/*.sublime-workspace
+
+# IDE - VSCode
+/web/backend-raba-store/.vscode/*
+/web/backend-raba-store/!.vscode/settings.json
+/web/backend-raba-store/!.vscode/tasks.json
+/web/backend-raba-store/!.vscode/launch.json
+/web/backend-raba-store/!.vscode/extensions.json
