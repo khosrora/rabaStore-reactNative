@@ -40,6 +40,9 @@
       ],
       "layout" :[
         "src/layout"
+      ],
+      "utils" :[
+        "src/utils"
       ]
     },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
