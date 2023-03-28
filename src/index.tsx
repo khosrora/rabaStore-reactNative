@@ -20,7 +20,7 @@ import Basket from './screens/Basket';
 // ! Redux
 import { useSelector, useDispatch } from "react-redux";
 import ProductsCategories from './screens/ProductsCategories';
-import { darkMode, test } from './redux/global/action';
+import { darkMode } from './redux/global/action';
 
 
 type Props = {
